@@ -1,11 +1,13 @@
 from flask import Flask, render_template, request, session, redirect, url_for
 from blackjack import deal_card, adjust_for_ace, compare_scores
 from art import logo
+import os
 
-app = Flask(__name__)
-app.secret_key = "supersecretkey"
+application = Flask(__name__)
+application.secret_key = os.environ.get('SECRET_KEY')
 
-@app.route("/", methods=["GET", "POST"])
+
+@application.route("/", methods=["GET", "POST"])
 def index():
     if "player_cards" not in session:
         # Start new game
@@ -51,4 +53,4 @@ def index():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    application.run(debug=True)

@@ -65,5 +65,34 @@
             <button type="submit" name="stand">Stand</button>
         </form>
     {% endif %}
+
+
+    <button id="how-btn" class="how-btn">How It Works?</button>
+
+    <div id="how-balloon" class="how-balloon" style="display: none;">
+      <div class="how-content">
+        <strong>How Blackjack Works</strong>
+        <p>
+          • You and the computer each start with 2 cards.<br>
+          • Click **Hit** to draw another card, or **Stand** to stop.<br>
+          • Going over 21 = bust → you lose.<br>
+          • Closest to 21 without busting wins.<br>
+          • Aces count as 11 or 1 — whichever helps most.
+        </p>
+      </div>
+    </div>
+
+    <script>
+      const howBtn = document.getElementById('how-btn');
+      const howBalloon = document.getElementById('how-balloon');
+
+      howBtn.addEventListener('click', () => {
+        if (howBalloon.style.display === 'none') {
+          howBalloon.style.display = 'block';
+        } else {
+          howBalloon.style.display = 'none';
+        }
+      });
+    </script>
 </body>
 </html>

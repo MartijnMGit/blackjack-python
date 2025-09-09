@@ -11,7 +11,7 @@ def get_secret_key():
 application = Flask(__name__)
 application.secret_key = get_secret_key()
 
-@application.route("/", methods=["GET", "POST"])
+@application.route("/blackjack", methods=["GET", "POST"])
 def index():
     if "player_cards" not in session:
         # Start new game
@@ -54,6 +54,10 @@ def index():
                            pc_score=sum(session["pc_cards"]) if session["game_over"] else "?",
                            result=session["result"],
                            game_over=session["game_over"])
+
+@application.route("/")
+def root_redirect():
+    return redirect(url_for('index'))
 
 
 if __name__ == "__main__":

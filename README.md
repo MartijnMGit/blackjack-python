@@ -69,11 +69,16 @@ Then open http://localhost:5000 in your browser.
 
 ## 🛠 Future Improvements
 
-Add user login & sessions
+Add user login & sessions 
+
 Store win/loss history
+
 Add animations and sounds
+
 Multiplayer support
+
 Docker support for easier deployment
+
 Automated tests using pytest
 
 ---

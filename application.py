@@ -1,11 +1,15 @@
 from flask import Flask, render_template, request, session, redirect, url_for
 from blackjack import deal_card, adjust_for_ace, compare_scores
 from art import logo
-import os
+import boto3
+
+def get_secret_key():
+    ssm = boto3.client('ssm', region_name='us-east-1')
+    response = ssm.get_parameter(Name='/SECRET_KEY', WithDecryption=True)
+    return response['Parameter']['Value']
 
 application = Flask(__name__)
-application.secret_key = os.environ.get('SECRET_KEY')
-
+application.secret_key = get_secret_key()
 
 @application.route("/", methods=["GET", "POST"])
 def index():
